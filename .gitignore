@@ -1,4 +1,9 @@
 node_modules
-.env
-Dockerfile
-docker-compose.yml
+public
+.tmp
+.sass-cache
+.idea
+client/bower_components
+dist
+/server/config/local.env.js
+back-perotium.iml

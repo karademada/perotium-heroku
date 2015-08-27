@@ -1,0 +1,96 @@
+<div class="container">
+  <div class="row" ng-show="vm.isLoggedIn()">
+    <div class="col-xs-12 col-md-12">
+      <form class="form">
+        <div class="form-group">
+          <label>Add a product in real time a show the result</label>
+
+          <input type="text" class="form-control" placeholder="Add a new thing here." ng-model="newUrl">
+        </div>
+        <div class="form-group">
+
+          <button type="submit" class="btn btn-primary" ng-click="postctrl.createProduct()">Add New Product</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div>
+    <div class="col-md-12" >
+      <div class="col-xs-12 col-md-6">
+        <script type="text/ng-template" id="myModalContent.html">
+          <div class="modal-header">
+            <h3 class="modal-title">I'm a modal!</h3>
+          </div>
+          <div class="modal-body">
+            <div class="modal-body">
+              <ul>
+                <li ng-repeat="item in postctrl.items">
+                  <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+                </li>
+              </ul>
+              Selected: <b>{{ selected.item }}</b>
+            </div>
+            <form class="form form-product" novalidate>
+              <div class="form-group">
+                <label for="name">name</label>
+                <input type="text" class="form-control" id="name" placeholder="name">
+              </div>
+              <div class="form-group">
+                <label for="title">title</label>
+                <input type="text" class="form-control" id="title" placeholder="title">
+              </div>
+              <div class="form-group">
+                <label for="link">link</label>
+                <input type="text" class="form-control" id="link" placeholder="link">
+              </div>
+              <div class="form-group">
+                <label for="upvote">upvote</label>
+                <input type="number" class="form-control" id="upvote" placeholder="link">
+              </div>
+              <div class="form-group">
+                <label for="comment">comment</label>
+                <input type="text" class="form-control" id="comment" placeholder="comment">
+              </div>
+              <div class="form-group">
+
+              </div>
+              <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+            <div class="box">
+              <img ng-src="{{ productSelected.images }}">
+
+              <p>{{ productSelected.name }}</p>
+
+              <p>{{ productSelected.prix }}</p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="postctrl.ok()">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="postctrl.cancel()">Cancel</button>
+          </div>
+        </script>
+        <button type="button" class="btn btn-default" ng-click="postctrl.open()">Open me!</button>
+
+      </div>
+      <div class="col-xs-6 col-md-12 listPosts">
+        <div ng-repeat="post in postctrl.allPosts">
+          <div class="product col-md-4">
+            <div class="head">
+              head
+            </div>
+            <div>
+
+            <img class="img img-responsive" ng-src="{{ post.images }}">
+
+            <p>{{ post.name }}</p>
+
+            <p>{{ post.prix }} €</p>
+            <button type="button" ng-click="postctrl.takeProduct(post);postctrl.open()">Take product</button>
+            </div>
+            <pre>{{ postctrl.getCurrentUser() }}</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

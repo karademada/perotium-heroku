@@ -1,0 +1,46 @@
+@import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap";
+
+.grey {
+  background-color: #666666;
+}
+
+.blue {
+  background-color: rgba(13, 86, 143, 0.82);
+}
+
+.red {
+  background-color: rgba(236, 27, 76, 0.83);
+}
+
+.posts-container {
+  @extend .row;
+  border: 1px solid #ddd;
+  padding-left: 10px;
+}
+
+.form-product {
+}
+
+.post-container {
+  @extend .row;
+  background-color: #f3f3f3;
+  border: 1px solid #666666;
+}
+
+.listProducts {
+   padding: 0px;
+
+}
+.product {
+  box-sizing: border-box;
+  width: 33rem;
+  border: 1px solid #ddd;
+  margin-left: 2rem;
+  margin-top: 2rem;
+  box-shadow: 0 0 2px rgba(136, 136, 136, 0.5);
+  .head{
+    background-color: #666666;
+    padding: 0px;
+
+  }
+}
