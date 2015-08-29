@@ -4,7 +4,7 @@
 angular.module('perotiumApp')
   .controller('PostsCtrl',postController)
 
-  function postController($scope, $http, socket,$log,Auth, $modal) {
+  function postController($scope, $http, socket,$log,Auth, $modal,$mdSidenav) {
     /* jshint validthis: true */
     var vm = this;
 
@@ -18,7 +18,8 @@ angular.module('perotiumApp')
 
     vm.animationsEnabled = true;
 
-    vm.open = function (size) {
+
+    vm.open = function open (size) {
       $log.log('yo')
       var modalInstance = $modal.open({
         animation: $scope.animationsEnabled,
@@ -45,12 +46,19 @@ angular.module('perotiumApp')
 
     }
 
+    vm.openSideNav = function openSideNav(){
+      $mdSidenav('right').open()
+          .then(function () {
+            $log.debug("open RIGHT is done");
+          });
+    }
 
-    $http.get('/api/products').success(function(allPosts) {
-      console.log('allPosts');
-      vm.allPosts = allPosts;
-      console.log(vm.allPosts);
-      socket.syncUpdates('post', vm.allPosts);
+
+    $http.get('/api/products').success(function(allProducts) {
+      console.log('allProducts');
+      vm.allProducts = allProducts;
+      console.log(vm.allProducts);
+      socket.syncUpdates('post', vm.allProducts);
     });
 
      vm.addComment = function addComment(){

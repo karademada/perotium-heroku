@@ -1,46 +1,32 @@
-@import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap";
+$backgroud-color:#e7e7e7;
+.posts-container{
+  background-color: $backgroud-color;
 
-.grey {
-  background-color: #666666;
-}
 
-.blue {
-  background-color: rgba(13, 86, 143, 0.82);
-}
+  .products {
+    box-sizing: border-box;
+    margin: 2rem;
+    //width: 33rem;
+    //border: 1px solid #ddd;
+    box-shadow: 0 0 2px rgba(136, 136, 136, 0.5);
 
-.red {
-  background-color: rgba(236, 27, 76, 0.83);
-}
-
-.posts-container {
-  @extend .row;
-  border: 1px solid #ddd;
-  padding-left: 10px;
-}
-
-.form-product {
-}
-
-.post-container {
-  @extend .row;
-  background-color: #f3f3f3;
-  border: 1px solid #666666;
-}
-
-.listProducts {
-   padding: 0px;
-
-}
-.product {
-  box-sizing: border-box;
-  width: 33rem;
-  border: 1px solid #ddd;
-  margin-left: 2rem;
-  margin-top: 2rem;
-  box-shadow: 0 0 2px rgba(136, 136, 136, 0.5);
-  .head{
-    background-color: #666666;
-    padding: 0px;
-
+    .product{
+      padding: unset;
+      margin-right: 16px;
+    }
+    .md-icon-float {
+      fill: #e7e7e7;
+    }
+  }
+  .item{
+    max-width: 91px;
+    max-height: 91px;
+    box-sizing: border-box;
+    background-color: $backgroud-color;
+    margin-right: 10px;
   }
 }
+
+
+
+

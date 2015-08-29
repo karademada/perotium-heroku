@@ -7,7 +7,9 @@ angular.module('perotiumApp', [
   'btford.socket-io',
   'ui.router',
   'ui.bootstrap',
-  'ngMaterial'
+  'ngMaterial',
+  'ngMdIcons',
+  'ngMessages'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
         $urlRouterProvider
