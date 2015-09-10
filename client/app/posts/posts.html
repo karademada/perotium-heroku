@@ -10,37 +10,39 @@
             </div>
         </md-toolbar>
 
-        <form name="postForm">
+        <form name="postForm" ng-submit="postctrl.createPostForm(post)" novalidate>
             <md-input-container class="md-icon-float">
                 <label for="title">title</label>
                 <input type="text" md-maxlength="30" id="title" placeholder="title" name="title" ng-model="post.title"
                        required>
-
-                <div ng-messages="postForm.title.$error || !postForm.title.$dirty">
-                    <div ng-message="required">This is required.</div>
-                    <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
+                <div ng-messages="postForm.$submitted || postForm.vote.$touched">
+                    <div ng-show="postForm.vote.$error">This is required.</div>
+                    <div ng-show="postForm.vote.$error">The name has to be less than 30 characters long.</div>
                 </div>
             </md-input-container>
             <md-input-container class="md-icon-float">
                 <label for="vote">Vote</label>
                 <input type="number" id="vote" placeholder="vote" name="vote" ng-model="post.vote" required>
 
-                <div ng-messages="postForm.vote.$error || postForm.vote.$dirty">
+                <div ng-messages="postForm.$submitted || postForm.vote.$touched">
                     <div ng-message="required">This is required.</div>
                 </div>
             </md-input-container>
             <md-input-container class="md-icon-float">
                 <label for="comment">comment</label>
                 <input type="text" id="comment" placeholder="comment" name="comment" ng-model="post.comment" required>
-                <div ng-messages="postForm.comment.$error">
+                <div ng-messages="postForm.$submitted || postForm.comment.$touched">
                     <div ng-message="required">This is required.</div>
                 </div>
             </md-input-container>
             <md-input-container class="md-icon" required>
 
-                <button type="submit" class="btn btn-default" ng-disabled="postForm.$valid" ng-click="postctrl.createPostForm(post)">Submit
+                <button type="submit" class="btn btn-default" ng-disabled="postForm.$invalid">Submit
                 </button>
             </md-input-container>
+            <div ng-messages="postctrl.productSelected">
+                <div>{{ postctrl.productSelected.name }} : This is required.</div>
+            </div>
         </form>
         <div class="md-actions">
             <md-button ng-click="cancel()">cancel</md-button>

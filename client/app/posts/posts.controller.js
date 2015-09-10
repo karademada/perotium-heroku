@@ -97,13 +97,10 @@
         }
 
         $rootScope.$on('CreateEvent', function (event) {
-            console.log(event);
-            event.stopPropagation();
             vm.showAdvanced(event);
         })
 
         vm.showAdvanced = function (ev) {
-            console.log('------showAdvanced-------');
             $mdDialog.show({
                 controller: DialogController,
                 templateUrl: "modal.html",
