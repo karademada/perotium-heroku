@@ -1,8 +1,82 @@
-<div class="posts-container autoScroll" layout="layout-fill">
-    <md-content md-theme="docs-dark" layout-padding class="products">
-            <form name="productForm" novalidate>
+<script type="text/ng-template" id="modal.html">
+    <md-dialog aria-label="Liste de Posts" layout-padding flex="70">
+        <md-toolbar layout-padding flex>
+            <div class="md-toolbar-tools">
+                <h2>Creer un post</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()" aria-label="Liste de Posts">
+                    <ng-md-icon layout-padding icon="close" style="fill: #888888"></ng-md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <form name="postForm">
+            <md-input-container class="md-icon-float">
+                <label for="title">title</label>
+                <input type="text" md-maxlength="30" id="title" placeholder="title" name="title" ng-model="post.title"
+                       required>
+
+                <div ng-messages="postForm.title.$error || !postForm.title.$dirty">
+                    <div ng-message="required">This is required.</div>
+                    <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-icon-float">
+                <label for="vote">Vote</label>
+                <input type="number" id="vote" placeholder="vote" name="vote" ng-model="post.vote" required>
+
+                <div ng-messages="postForm.vote.$error || postForm.vote.$dirty">
+                    <div ng-message="required">This is required.</div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-icon-float">
+                <label for="comment">comment</label>
+                <input type="text" id="comment" placeholder="comment" name="comment" ng-model="post.comment" required>
+                <div ng-messages="postForm.comment.$error">
+                    <div ng-message="required">This is required.</div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-icon" required>
+
+                <button type="submit" class="btn btn-default" ng-disabled="postForm.$valid" ng-click="postctrl.createPostForm(post)">Submit
+                </button>
+            </md-input-container>
+        </form>
+        <div class="md-actions">
+            <md-button ng-click="cancel()">cancel</md-button>
+            <span flex/>
+            <md-button ng-click="hide()">close</md-button>
+        </div>
+    </md-dialog>
+</script>
+<div class="posts-container autoScroll" layout="layout-fill" layout-align="center">
+    <md-content md-theme="docs-dark" class="posts" flex="50">
+        <!--button ng-click="postctrl.showAdvanced($event)">open post form</button-->
+        <div layout-padding ng-repeat="post in postctrl.allPosts | filter:productForm.search">
+            <md-grid-list
+                    md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6"
+                    md-row-height-gt-md="1:1" md-row-height="2:2" layout="row">
+                <md-grid-tile class="gridProductItem"
+                              md-rowspan="4" md-colspan="2" md-colspan-sm="1" flex="50">
+                    <md-grid-tile-header>
+                        <h3>{{ post.title }}</h3>
+                    </md-grid-tile-header>
+                    <md-content>
+                        <img ng-src="{{post.product.images}}" class="item" alt="{{post.name}}">
+
+                    </md-content>
+                    <md-grid-tile-footer>
+                        <h3>{{ post.link }}</h3>
+                    </md-grid-tile-footer>
+                </md-grid-tile>
+            </md-grid-list>
+        </div>
+    </md-content>
+    <md-content md-theme="docs-dark" class="products" flex="50 ">
+        <aside layout-padding flex="33">
+            <!--<form name="productForm" novalidate>
                 <md-input-container class="md-icon-float" required>
-                    <!-- Use floating label instead of placeholder -->
+                    &lt;!&ndash; Use floating label instead of placeholder &ndash;&gt;
                     <label>Search a product</label>
                     <input ng-model="productForm.search" type="text">
 
@@ -12,23 +86,29 @@
                         <div ng-message="minlength">That's too short!</div>
                     </div>
                 </md-input-container>
-            </form>
+            </form>-->
             <md-list layout="column" layout-padding>
-                <md-list-item class="md-3-line product" ng-repeat="product in postctrl.allProducts | filter:productForm.search">
+                <md-subheader class="md-no-sticky">Nouveaux produits</md-subheader>
+                <md-list-item class="md-3-line product"
+                              ng-repeat="product in postctrl.allProducts | filter:productForm.search">
                     <img ng-src="{{product.images}}" class="item" alt="{{product.name}}">
 
-                    <div class="md-list-item-text">
+                    <div class="md-list-item-text" flex>
                         <h3>{{product.name}}</h3>
                         <h4>{{product.prix }}€</h4>
 
                         <p>{{product.url}}</p>
                     </div>
-                    <div class="md-list-item-inner">
+                    <div class="md-list-item-inner" flex>
                         <ng-md-icon layout-padding icon="delete" style="fill: #888888"></ng-md-icon>
                         <ng-md-icon layout-padding icon="edit" style="fill: #888888"></ng-md-icon>
+                        <md-button ng-click="postctrl.takeProduct(product)">Choisir</md-button>
+                    </div>
+                    <div class="md-list-item-inner" flex>
                     </div>
                     <md-divider ng-if="!$last"></md-divider>
                 </md-list-item>
             </md-list>
+        </aside>
     </md-content>
 </div>
