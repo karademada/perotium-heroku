@@ -1,6 +1,5 @@
 .tmp
 .sass-cache
 .idea
-client/bower_components
 dist
 back-perotium.iml
