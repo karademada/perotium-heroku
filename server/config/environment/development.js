@@ -9,5 +9,5 @@ module.exports = {
     //uri: 'mongodb://localhost:27017/perotium-dev'
   },
 
-  seedDB: true
+  seedDB: false
 };

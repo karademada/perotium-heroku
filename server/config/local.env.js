@@ -6,7 +6,7 @@
 // You will need to set these on the server you deploy to.
 
 module.exports = {
-  DOMAIN: 'https://fierce-hamlet-3140.herokuapp.com/',
+  DOMAIN: 'https://perotium-heroku.herokuapp.com/',
   SESSION_SECRET: "perotium-secret",
 
   FACEBOOK_ID: '1515480425389476',
