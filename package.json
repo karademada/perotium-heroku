@@ -67,7 +67,7 @@
     "grunt-protractor-runner": "^1.1.0",
     "grunt-asset-injector": "^0.1.0",
     "grunt-karma": "~0.8.2",
-    "grunt-build-control": "DaftMonk/grunt-build-control",
+    "grunt-build-control": "github:daftmonk/grunt-build-control",
     "grunt-mocha-test": "~0.10.2",
     "grunt-contrib-sass": "^0.7.3",
     "jit-grunt": "^1.2.1",
@@ -113,5 +113,19 @@
     "test": "grunt test",
     "update-webdriver": "node node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update"
   },
-  "private": false
+  "private": false,
+  "description": "A barebones Node.js app using [Express 4](http://expressjs.com/).",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karademada/perotium-heroku.git"
+  },
+  "keywords": [
+    "perotium"
+  ],
+  "author": "lazantsy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karademada/perotium-heroku/issues"
+  },
+  "homepage": "https://github.com/karademada/perotium-heroku#readme"
 }
