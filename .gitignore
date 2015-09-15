@@ -1,5 +1,6 @@
+node_modules
 .tmp
 .sass-cache
 .idea
-dist
+client/bower_components
 back-perotium.iml
