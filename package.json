@@ -68,7 +68,7 @@
     "grunt-build-control": "github:daftmonk/grunt-build-control",
     "grunt-mocha-test": "~0.10.2",
     "grunt-contrib-sass": "^0.7.3",
-    "jit-grunt": "^1.2.1",
+    "jit-grunt": "^0.9.1",
     "time-grunt": "~0.3.1",
     "grunt-express-server": "~0.4.17",
     "grunt-open": "~0.2.3",
