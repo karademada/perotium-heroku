@@ -109,7 +109,7 @@
     "npm": "2.10.1"
   },
   "scripts": {
-    "prestart":"grunt build",
+    "build":"grunt build",
     "start": "node server/app.js",
     "test": "grunt test",
     "update-webdriver": "node node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update"
